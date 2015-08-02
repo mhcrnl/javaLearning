@@ -4,10 +4,11 @@ import java.util.Scanner;
 
 public class Array {
 
-	int i;
-	static int arrayLength, arrayMinValue, arrayMaxValue;
-	int[] myArray;
+    int i;
 	
+    private int[] myArray;
+	private static int arrayLength, arrayMinValue, arrayMaxValue;
+
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -20,6 +21,11 @@ public class Array {
 		 arrayMaxValue = in.nextInt();
 		 Array array = new Array();
 		 array.build(arrayLength);
+		 ModifyArray modifiedArray = new ModifyArray();
+		 modifiedArray.toPrepare();
+		
+		/* int[] someex = array.getArray();
+		 System.out.println("\n" + someex);*/
 		 in.close();
 		 
 	}
@@ -30,6 +36,7 @@ public class Array {
 		Array array = new Array();
 		myArray = new int [arrayLength];
 		
+		System.out.print("Array:=");
 	    for(int i=0;i<myArray.length;i++) {
 	    myArray[i] = array.getRandomValue(arrayMinValue, arrayMaxValue);
 	    System.out.print(myArray[i] + " ");
@@ -37,13 +44,15 @@ public class Array {
 	  
 	}
 	
-	public void change1 () {
-		
-	}
 	
 	private int getRandomValue(int min, int max) {
 	   int range = (max - min) + 1;     
 	   return (int)(Math.random() * range) + min;
+	}
+	
+	public int[] getArray() {
+		
+		 return myArray.clone();
 	}
 
 }
