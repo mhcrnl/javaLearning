@@ -1,23 +1,24 @@
 package com.epam.nikita_salomatin;
 
-import java.util.Scanner;
 
 public class ModifyArray {
-	private int taskNumber;
+    int sourceElements;
 	private int[] modifiedArray;
 	
 	public void modify(int taskNumber) {
 		
-		this.taskNumber=taskNumber;
 		
 		switch (taskNumber) {
 	
         case 1:   
         		 Array array = new Array();
-                 modifiedArray = array.getArray();
-                 for(int i=0;i<modifiedArray.length;i++) {
-                	 System.out.print(modifiedArray[i] + " ");
-                 }
+                 
+        		 sourceElements = array.getElement(1);
+        		 System.out.print("Modify:=" + sourceElements + " ");
+                 /*for(int i=0;i<5;i++) {
+                	 sourceElements = array.getElement(i);
+                	 System.out.print(sourceElements + " ");
+                 }*/
                  
                  break;
         
@@ -26,16 +27,6 @@ public class ModifyArray {
         }
 	}
 	
-	public void toPrepare() {
-		
-		 System.out.println("\n" + "Type task number:");
-		 Scanner in = new Scanner(System.in); 
-		 taskNumber = in.nextInt();
-		 ModifyArray modifiedArray = new ModifyArray();
-		 modifiedArray.modify(taskNumber);
-		 in.close();
-		
-	}
 	
 	
 }

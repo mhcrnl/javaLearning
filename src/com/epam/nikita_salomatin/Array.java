@@ -6,27 +6,20 @@ public class Array {
 
     int i;
 	
-    private int[] myArray;
-	private static int arrayLength, arrayMinValue, arrayMaxValue;
-
+    public int[] myArray;
+	private static int arrayLength, arrayMinValue, arrayMaxValue, taskNumber, test;
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 System.out.println("Type array length:");
-		 Scanner in = new Scanner(System.in); 
-		 arrayLength = in.nextInt();
-		 System.out.println("Type array min value:");
-		 arrayMinValue = in.nextInt();
-		 System.out.println("Type array max value:");
-		 arrayMaxValue = in.nextInt();
+		 
 		 Array array = new Array();
+		 array.toPrepare();
 		 array.build(arrayLength);
 		 ModifyArray modifiedArray = new ModifyArray();
-		 modifiedArray.toPrepare();
-		
-		/* int[] someex = array.getArray();
-		 System.out.println("\n" + someex);*/
-		 in.close();
+		 modifiedArray.modify(taskNumber);
+		 test = array.getElement(1);
+		 System.out.print("Result: " + test);
 		 
 	}
 	
@@ -41,7 +34,8 @@ public class Array {
 	    myArray[i] = array.getRandomValue(arrayMinValue, arrayMaxValue);
 	    System.out.print(myArray[i] + " ");
 	    }
-	  
+	    
+	     
 	}
 	
 	
@@ -53,6 +47,36 @@ public class Array {
 	public int[] getArray() {
 		
 		 return myArray.clone();
+	}
+	
+	public void setArray(int[] myArray) {
+		
+		  this.myArray=myArray;
+	}
+	
+	
+	public int getElement(int element) {    
+
+		return myArray[element]; 
+	} 
+
+	public void setElement(int value, int element) { 
+		myArray[element] = value; 
+	}
+	
+	
+	private void toPrepare() {
+		
+		 Scanner in = new Scanner(System.in); 
+		 System.out.println("Type array length:");
+		 arrayLength = in.nextInt();
+		 System.out.println("Type array min value:");
+		 arrayMinValue = in.nextInt();
+		 System.out.println("Type array max value:");
+		 arrayMaxValue = in.nextInt();
+		 System.out.println("Type task number:");
+		 taskNumber = in.nextInt();
+		 in.close();
 	}
 
 }
