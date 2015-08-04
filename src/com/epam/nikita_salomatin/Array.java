@@ -4,10 +4,23 @@ import java.util.Scanner;
 
 public class Array {
 
-    int i;
+    
+    private int[] myArray;
+	private static int arrayLength, arrayMinValue, arrayMaxValue, taskNumber;
 	
-    public int[] myArray;
-	private static int arrayLength, arrayMinValue, arrayMaxValue, taskNumber, test;
+	private void toPrepare() {
+		
+		 Scanner in = new Scanner(System.in); 
+		 System.out.println("Type array length:");
+		 arrayLength = in.nextInt();
+		 System.out.println("Type array min value:");
+		 arrayMinValue = in.nextInt();
+		 System.out.println("Type array max value:");
+		 arrayMaxValue = in.nextInt();
+		 System.out.println("Type task number:");
+		 taskNumber = in.nextInt();
+		 in.close();
+	}
 	
 	
 	public static void main(String[] args) {
@@ -16,11 +29,8 @@ public class Array {
 		 Array array = new Array();
 		 array.toPrepare();
 		 array.build(arrayLength);
-		 ModifyArray modifiedArray = new ModifyArray();
-		 modifiedArray.modify(taskNumber);
-		 test = array.getElement(1);
-		 System.out.print("Result: " + test);
-		 
+		 array.modify(taskNumber);
+ 
 	}
 	
 	
@@ -39,14 +49,50 @@ public class Array {
 	}
 	
 	
+	public void modify(int taskNumber) {
+		
+		
+		
+		switch (taskNumber) {
+	
+        case 1:   
+        		 
+        		 try {
+        			 
+        			 System.out.print("\n" + "Modified array:=");
+        			 int modifiedArray[] = getArray();
+        			 for(int i=0;i<modifiedArray.length;i++) {
+            			 
+            			 System.out.print(modifiedArray[i] + " ");
+            		 }
+            		 
+        		  }  catch (NullPointerException e) {
+    				 System.out.print("\n" + "Got null value");
+    				 
+    			}
+        		 
+        		 break;
+        		
+        		 
+        		 
+        		 
+        
+        default: System.out.println("\n" + "Invalid task number");
+                 break;
+        }
+	}
+	
 	private int getRandomValue(int min, int max) {
 	   int range = (max - min) + 1;     
 	   return (int)(Math.random() * range) + min;
 	}
 	
+	
+	
+	
 	public int[] getArray() {
 		
-		 return myArray.clone();
+		 return this.myArray;
 	}
 	
 	public void setArray(int[] myArray) {
@@ -65,18 +111,8 @@ public class Array {
 	}
 	
 	
-	private void toPrepare() {
-		
-		 Scanner in = new Scanner(System.in); 
-		 System.out.println("Type array length:");
-		 arrayLength = in.nextInt();
-		 System.out.println("Type array min value:");
-		 arrayMinValue = in.nextInt();
-		 System.out.println("Type array max value:");
-		 arrayMaxValue = in.nextInt();
-		 System.out.println("Type task number:");
-		 taskNumber = in.nextInt();
-		 in.close();
-	}
+	
+	
+	
 
 }
